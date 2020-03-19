@@ -1,21 +1,25 @@
 import pdb
 
-# Is game started ?
+# Game characteristics
 is_playing = True
+# is_new_game = False
 
 # Character information
 name = 'Valerie'
-life = 15
+life = 100
 
 # Game
 actions_display = ['Help', 'Eat', 'Sleep']
 actions = []
 
-def to_lower(self):
+# Function to display an array in lower
+def to_lower(self, array):
     for k in self:
         index = self.index(k)
         result = self[index].lower()
-        actions.append(result)
+        array.append(result)
+
+pdb.set_trace()
 
 while is_playing:
 
