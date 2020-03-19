@@ -5,7 +5,7 @@ is_playing = True
 # is_new_game = False
 
 # Character information
-name = 'Valerie'
+names = list()
 life = 100
 
 # Game
@@ -19,12 +19,12 @@ def to_lower(self, array):
         result = self[index].lower()
         array.append(result)
 
-pdb.set_trace()
-
 while is_playing:
 
     # When player start the game
-    print('\nHello, ' + name)
+    prompt_name = input('What\'s your name ?')
+    names.append('prompt_name')
+
     if life < 20:
         print('You\'re weak. You only have ' + str(life) + 'LP.')
     elif life < 50:
