@@ -1,0 +1,62 @@
+from classes import Player, Functions, Sleep, Feed, Explore
+
+# Game characteristics
+is_playing = True
+weather = ['Sunny', 'Rainy']
+
+# Game
+actions_display = ['Help', 'Eat', 'Sleep', 'Explore']
+actions = []
+Functions.to_lower(actions_display, actions)
+
+while is_playing:
+    # When player start the game
+    prompt_name = input('What\'s your name ?\n')
+    Player.name.append(prompt_name)
+
+    # TODO: add datetime to say different kind of msg according to the hour of the day
+    print('\nHey ' + Player.name[0] + '\n')
+
+    if Player.low_life:
+        print('You\'re weak. You only have ' + str(Player.life) + 'LP.')
+    elif Player.mid_life:
+        print('To my mind, you need to rest. You only have ' + str(Player.life) + 'LP.')
+    elif Player.full_life:
+        print('Today is a good day. You have ' + str(Player.life) + 'LP.')
+
+    help_msg = ('\n'
+                '=========================\n'
+                '      You can...\n'
+                '        Eat\n'
+                '        Sleep\n'
+                '        Explore\n'
+                '\n'
+                ' Need help ? Type \'help\'\n'
+                '=========================')
+
+    print(help_msg)
+
+    # Player choice
+    answer = ''
+    while answer != 'exit':
+        answer = input('What do you wanna do?\n')
+        search = Functions.search_action()
+        while not search:
+            print('Wrong answer. Please try again.\n')
+            search = Functions.search_action()
+            answer = input('What do you wanna do?\n')
+        if answer == actions[0]:
+            print(help_msg)
+
+        if answer == actions[1]:
+            Player.feed()
+
+        elif answer == actions[2]:
+            Player.sleep()
+
+        elif answer == actions[3]:
+            Player.explore()
+
+        if answer == 'exit':
+            print('Right, goodbye!')
+            is_playing = False
