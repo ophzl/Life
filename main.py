@@ -46,13 +46,13 @@ while is_playing:
             print(help_msg)
 
         if answer == Functions.actions[1]:
-            Player.feed(player)
+            Feed.feed(player)
 
         elif answer == Functions.actions[2]:
-            Player.sleep(player)
+            Sleep.sleep(player)
 
         elif answer == Functions.actions[3]:
-            Player.explore(player)
+            Explore.explore(player)
 
         if answer == 'exit':
             print('Right, goodbye!')

@@ -11,12 +11,3 @@ class Player:
     low_life = life < 20
     mid_life = life < 50
     full_life = life <= 100
-
-    def feed(self):
-        Feed.feed()
-
-    def sleep(self):
-        Sleep.sleep()
-
-    def explore(self):
-        Explore.explore()
