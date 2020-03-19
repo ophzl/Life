@@ -1,13 +1,10 @@
-from classes import Player, Functions, Sleep, Feed, Explore
+from classes import *
 
 # Game characteristics
 is_playing = True
 weather = ['Sunny', 'Rainy']
 
-# Game
-actions_display = ['Help', 'Eat', 'Sleep', 'Explore']
-actions = []
-Functions.to_lower(actions_display, actions)
+player = Player
 
 while is_playing:
     # When player start the game
@@ -40,22 +37,22 @@ while is_playing:
     answer = ''
     while answer != 'exit':
         answer = input('What do you wanna do?\n')
-        search = Functions.search_action()
+        search = Functions.search_action(answer, Functions.actions)
         while not search:
             print('Wrong answer. Please try again.\n')
-            search = Functions.search_action()
+            search = Functions.search_action(answer, Functions.actions)
             answer = input('What do you wanna do?\n')
-        if answer == actions[0]:
+        if answer == Functions.actions[0]:
             print(help_msg)
 
-        if answer == actions[1]:
-            Player.feed()
+        if answer == Functions.actions[1]:
+            Player.feed(player)
 
-        elif answer == actions[2]:
-            Player.sleep()
+        elif answer == Functions.actions[2]:
+            Player.sleep(player)
 
-        elif answer == actions[3]:
-            Player.explore()
+        elif answer == Functions.actions[3]:
+            Player.explore(player)
 
         if answer == 'exit':
             print('Right, goodbye!')

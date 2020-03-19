@@ -1,12 +1,12 @@
 import main, time, random
-from classes import functions as f
+from classes import Functions
 
 
 class Explore:
     explore = []
     is_exploring = False
 
-    def explore(player):
+    def explore(self):
         print('\nExploring the world.\n')
         continue_exploration = ''
         is_exploring = True
@@ -17,7 +17,7 @@ class Explore:
 
             if when_exploring == 1:
                 print('Oh no! You does the malin and felt in the ravin. You loose 25LP.')
-                player.life -= 15
+                self.life -= 15
             elif when_exploring == 2:
                 animals = ['Rat', 'Crocodile', 'Bull']
                 print('You\'re in front of a big and mysterious animal...\n')
@@ -29,9 +29,9 @@ class Explore:
                 choices = ['Fight', 'Run']
                 choices_lower = []
 
-                f.to_lower(choices, choices_lower)
+                Functions.to_lower(choices, choices_lower)
 
-                player_choice = input('What do you do ?\n'
+                self_choice = input('What do you do ?\n'
                                       'Fight\n'
                                       'Run')
             elif when_exploring == 3:
@@ -40,7 +40,7 @@ class Explore:
             if continue_exploration == 'no':
                 is_exploring = False
 
-            if player.life == 0:
+            if self.life == 0:
                 print('You\'re dead.')
                 is_exploring = False
                 main.is_playing = False

@@ -1,5 +1,4 @@
-from classes import exploration, sleep, food
-
+from classes import *
 
 class Player:
     name = list()
@@ -13,11 +12,11 @@ class Player:
     mid_life = life < 50
     full_life = life <= 100
 
-    def sleep(self):
-        sleep.sleep(self)
-
     def feed(self):
-        food.feed(self)
+        Feed.feed()
+
+    def sleep(self):
+        Sleep.sleep()
 
     def explore(self):
-        exploration.explore(self)
+        Explore.explore()
