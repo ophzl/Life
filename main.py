@@ -1,10 +1,9 @@
 from classes import *
+import pdb
 
 # Game characteristics
 is_playing = True
 weather = ['Sunny', 'Rainy']
-
-player = Player
 
 while is_playing:
     # When player start the game
@@ -46,13 +45,13 @@ while is_playing:
             print(help_msg)
 
         if answer == Functions.actions[1]:
-            Feed.feed(player)
+            Feed.feed(Player)
 
         elif answer == Functions.actions[2]:
-            Sleep.sleep(player)
+            Sleep.sleep(Player)
 
         elif answer == Functions.actions[3]:
-            Explore.explore(player)
+            Explore.explore(Player, Functions, is_playing)
 
         if answer == 'exit':
             print('Right, goodbye!')
