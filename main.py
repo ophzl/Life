@@ -32,7 +32,7 @@ while is_playing:
 
     print(help_msg)
 
-    # Player choice
+    # Player adventure
     answer = ''
     while answer != 'exit':
         answer = input('What do you wanna do?\n')
