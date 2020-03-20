@@ -1,6 +1,8 @@
 class Functions:
-    actions_display = ['Help', 'Eat', 'Sleep', 'Explore']
+    actions_txt = open('txt/actions.txt', 'r')
+    actions_display = actions_txt.read().splitlines()
     actions = []
+
 
     # Function to display an array in lower
     def to_lower(self, array):

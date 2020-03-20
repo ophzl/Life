@@ -9,22 +9,26 @@ class Explore:
         is_exploring = True
 
         while is_exploring:
-            when_exploring = random.randrange(1, 3)
+            when_exploring = random.randrange(1, 4)
             continue_exploration = input('Do you want to continue ? (yes/no)\n')
             if continue_exploration == 'no':
                 is_exploring = False
             if is_exploring:
-                if when_exploring == 1:
+                if when_exploring == 1: # Ravin
                     print('(-25LP) || Oh no! Who does the malin fall in the ravin. You loose 25LP.')
                     self.life -= 15
-                elif when_exploring == 2:
-                    animals = ['Rat', 'Crocodile', 'Bull', 'Wolf', 'Cow', 'Dog', 'Cat', 'Coronavirus']
+                elif when_exploring == 2: # Animal
+                    # TODO: add an external file where all animals are referenced with unique message for fight
+                    animals_txt = open('txt/animals.txt', 'r')
+                    animals = animals_txt.read().splitlines()
+
                     print('\nYou\'re in front of a big and mysterious animal...')
                     time.sleep(3)
                     print('...we can distinguish it\'s...')
                     time.sleep(1)
-                    print('...a ' + random.choice(animals) + '!\n')
+                    print('...a ' + random.choice(animals))
                     time.sleep(1)
+
                     choices = ['Fight', 'Run']
                     choices_lower = []
 
@@ -35,22 +39,25 @@ class Explore:
                                           '   - Run\n')
                     if player_choice == choices_lower[0]:
                         if self.xp < 50:
-                            print('\nYou have 10% of chance to win.\n')
+                            if self.tools:
+                                chances = [0.8, 0.2]
+                                print('\nYou have 80% to win.\n')
+                            else:
+                                chances = [0.1, 0.9]
+                                print('\nYou have 10% of chance to win.\n')
                             continue_fight = input('Are you sure you want to continue ? (yes/no)\n')
                             issue = ['win', 'loose']
                             if continue_fight != 'no':
-                                chances = [0.1, 0.9]
                                 result = random.choices(issue, chances)
                                 if result == ['win']:
-                                    print('(+15px) || You\'re really lucky. You win this fight and gain 15xp.')
-                                    self.xp += 15
+                                    print('(+50xp) || You\'re really lucky. You win this fight and gain 15xp.')
+                                    self.xp += 50
                                 if result == ['loose']:
                                     print('(-25LP) || You loose... ')
-                            elif continue_fight == 'no':
-                                print('ok')
 
                 elif when_exploring == 3:
-                    print('3')
+                    print('\n(+5 berries) || You found a bush full of berries.')
+                    self.food_stock['berries'] += 5
 
                 if continue_exploration == 'no':
                     is_exploring = False
