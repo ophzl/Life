@@ -4,9 +4,9 @@ import time, random, json
 class Explore:
     is_exploring = False
 
-    def explore(self, function, main):
+    def explore(self, function, main, game_save):
 
-        with open('txt/saves/save1.json', 'r') as json_file:
+        with open('txt/saves/save'+ game_save +'.json', 'r') as json_file:
             json_data = json.load(json_file)
         print('\nExploring the world...\n')
 
@@ -46,14 +46,17 @@ class Explore:
                     player_choice = input('What do you do ?\n'
                                           '   - Fight\n'
                                           '   - Run\n')
+                    # search = function.search_action(player_choice, choices_lower)
+                    # while not search:
+                    #     print('Wrong answer. Please try again.')
+                    #     search = function.search_action(player_choice, choices_lower)
+                    #     player_choice = input('What do you do ?\n'
+                    #                           '   - Fight\n'
+                    #                           '   - Run\n')
                     if player_choice == choices_lower[0]:
                         if json_data['xp'] < 50:
-                            if self.tools:
-                                chances = [0.8, 0.2]
-                                print('\nYou have 80% to win.\n')
-                            else:
-                                chances = [0.1, 0.9]
-                                print('\nYou have 10% of chance to win.\n')
+                            chances = [0.1, 0.9]
+                            print('\nYou have 10% of chance to win.\n')
                             continue_fight = input('Are you sure you want to continue ? (yes/no)\n')
                             issue = ['win', 'loose']
                             if continue_fight != 'no':
@@ -63,6 +66,48 @@ class Explore:
                                     json_data['xp'] += 50
                                 if result == ['loose']:
                                     print('(-25LP) || You loose... ')
+                                    json_data['life'] -= 25
+                        elif json_data['xp'] < 100:
+                            chances = [0.2, 0.8]
+                            print('\nYou have 20% of chance to win.\n')
+                            continue_fight = input('Are you sure you want to continue ? (yes/no)\n')
+                            issue = ['win', 'loose']
+                            if continue_fight != 'no':
+                                result = random.choices(issue, chances)
+                                if result == ['win']:
+                                    print('(+50xp) || You\'re really lucky. You win this fight and gain 50xp.')
+                                    json_data['xp'] += 50
+                                if result == ['loose']:
+                                    print('(-25LP) || You loose... ')
+                                    json_data['life'] -= 25
+                        elif json_data['xp'] < 150:
+                            chances = [0.3, 0.7]
+                            print('\nYou have 30% of chance to win.\n')
+                            continue_fight = input('Are you sure you want to continue ? (yes/no)\n')
+                            issue = ['win', 'loose']
+                            if continue_fight != 'no':
+                                result = random.choices(issue, chances)
+                                if result == ['win']:
+                                    print('(+50xp) || You\'re really lucky. You win this fight and gain 50xp.')
+                                    json_data['xp'] += 50
+                                if result == ['loose']:
+                                    print('(-25LP) || You loose... ')
+                                    json_data['life'] -= 25
+                        elif json_data['xp'] < 200:
+                            chances = [0.4, 0.6]
+                            print('\nYou have 40% of chance to win.\n')
+                            continue_fight = input('Are you sure you want to continue ? (yes/no)\n')
+                            issue = ['win', 'loose']
+                            if continue_fight != 'no':
+                                result = random.choices(issue, chances)
+                                if result == ['win']:
+                                    print('(+50xp) || You\'re really lucky. You win this fight and gain 50xp.')
+                                    json_data['xp'] += 50
+                                if result == ['loose']:
+                                    print('(-25LP) || You loose... ')
+                                    json_data['life'] -= 25
+                    if player_choice == choices_lower[1]:
+                        print('\nYou run.\n')
 
                 elif when_exploring == 3:
                     print('\n(+5 berries) || You found a bush full of berries.')
@@ -76,5 +121,5 @@ class Explore:
                     is_exploring = False
                     main = False
 
-        with open('txt/saves/save1.json', 'w') as json_file:
+        with open('txt/saves/save'+ game_save +'.json', 'w') as json_file:
             json.dump(json_data, json_file)

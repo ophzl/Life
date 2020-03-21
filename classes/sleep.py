@@ -1,8 +1,8 @@
 import json
 
 class Sleep:
-    def sleep(self):
-        with open('txt/saves/save1.json', 'r') as json_file:
+    def sleep(self, game_save):
+        with open('txt/saves/save'+ game_save +'.json', 'r') as json_file:
             json_data = json.load(json_file)
             life = json_data['life']
             if life < 100:
@@ -19,5 +19,5 @@ class Sleep:
             else:
                 print('\nHaha ! You don\'t need to sleep !\n')
 
-        with open('txt/saves/save1.json', 'w') as json_file:
+        with open('txt/saves/save'+ game_save +'.json', 'w') as json_file:
             json.dump(json_data, json_file)

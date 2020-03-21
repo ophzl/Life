@@ -6,3 +6,4 @@ LP
 XP
 Money
 Food stock
+Exit

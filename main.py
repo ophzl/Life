@@ -27,10 +27,21 @@ elif save == saves[1]:
 elif save == saves[2]:
     game_save = '3'
 
-Player.name = Player.player(game_save)['name']
-Player.life = Player.player(game_save)['life']
-Player.xp = Player.player(game_save)['xp']
-Player.money = Player.player(game_save)['money']
+if Player.player(game_save)['name'] != '':
+    Player.name = Player.player(game_save)['name']
+    Player.life = Player.player(game_save)['life']
+    Player.xp = Player.player(game_save)['xp']
+    Player.money = Player.player(game_save)['money']
+else:
+    with open('txt/saves/save'+ game_save +'.json', 'r') as json_file:
+        json_data = json.load(json_file)
+    json_data['name'] = input('Oh, you\'re new. What\'s your name?')
+    with open('txt/saves/save'+ game_save +'.json', 'w') as json_file:
+        json.dump(json_data, json_file)
+    Player.name = Player.player(game_save)['name']
+    Player.life = Player.player(game_save)['life']
+    Player.xp = Player.player(game_save)['xp']
+    Player.money = Player.player(game_save)['money']
 
 # Life index
 low_life = Player.life < 20
@@ -77,10 +88,10 @@ more_actions = ('\n'
 # Player adventure
 answer = ''
 while answer != 'exit':
-    with open('txt/saves/save1.json', 'r') as json_file:
+    with open('txt/saves/save'+ game_save +'.json', 'r') as json_file:
         json_data = json.load(json_file)
     answer = input('What do you wanna do?\n')
-    search = Functions.search_action(answer, Functions.actions)
+    search = Functions.search_action(answer, Functions.actions) or Functions.search_action(answer, Functions.actions_display)
     while not search:
         print('Wrong answer. Please try again.\n')
         search = Functions.search_action(answer, Functions.actions)
@@ -92,10 +103,10 @@ while answer != 'exit':
         Feed.feed(Player)
 
     elif answer == Functions.actions[2] or answer == Functions.actions_display[2]:
-        Sleep.sleep(Player)
+        Sleep.sleep(Player, game_save)
 
     elif answer == Functions.actions[3] or answer == Functions.actions_display[3]:
-        Explore.explore(Player, Functions, is_playing)
+        Explore.explore(Player, Functions, is_playing, game_save)
 
     elif answer == Functions.actions[4] or answer == Functions.actions_display[4]:
         print('\nYou have ' + str(json_data['life']) + 'LP.\n')
