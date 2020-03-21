@@ -1,22 +1,31 @@
-import time, random
+import time, random, json
 
 
 class Explore:
     is_exploring = False
 
     def explore(self, function, main):
+
+        with open('txt/saves/save1.json', 'r') as json_file:
+            json_data = json.load(json_file)
         print('\nExploring the world...\n')
+
         is_exploring = True
 
         while is_exploring:
+
             when_exploring = random.randrange(1, 4)
             continue_exploration = input('Do you want to continue ? (yes/no)\n')
+
             if continue_exploration == 'no':
                 is_exploring = False
+
             if is_exploring:
+
                 if when_exploring == 1: # Ravin
                     print('(-25LP) || Oh no! Who does the malin fall in the ravin. You loose 25LP.')
-                    self.life -= 15
+                    json_data['life'] -= 15
+
                 elif when_exploring == 2: # Animal
                     # TODO: add an external file where all animals are referenced with unique message for fight
                     animals_txt = open('txt/animals.txt', 'r')
@@ -38,7 +47,7 @@ class Explore:
                                           '   - Fight\n'
                                           '   - Run\n')
                     if player_choice == choices_lower[0]:
-                        if self.xp < 50:
+                        if json_data['xp'] < 50:
                             if self.tools:
                                 chances = [0.8, 0.2]
                                 print('\nYou have 80% to win.\n')
@@ -50,8 +59,8 @@ class Explore:
                             if continue_fight != 'no':
                                 result = random.choices(issue, chances)
                                 if result == ['win']:
-                                    print('(+50xp) || You\'re really lucky. You win this fight and gain 15xp.')
-                                    self.xp += 50
+                                    print('(+50xp) || You\'re really lucky. You win this fight and gain 50xp.')
+                                    json_data['xp'] += 50
                                 if result == ['loose']:
                                     print('(-25LP) || You loose... ')
 
@@ -62,7 +71,10 @@ class Explore:
                 if continue_exploration == 'no':
                     is_exploring = False
 
-                if self.life == 0:
+                if json_data['life'] == 0:
                     print('You\'re dead.')
                     is_exploring = False
                     main = False
+
+        with open('txt/saves/save1.json', 'w') as json_file:
+            json.dump(json_data, json_file)
