@@ -5,8 +5,10 @@
 <br>
 <p>
 To launch the game, simply open a terminal and write:
-<i><b>python main.py</b></i>
 </p>
+```
+python main.py
+```
 <br>
 <p>PS: The project name is susceptible to change.</p>
 
