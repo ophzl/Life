@@ -108,7 +108,6 @@ more_actions = ('\n'
                 '\t       - LP\n'
                 '\t       - XP\n'
                 '\t       - Money\n'
-                '\t       - Food Stock\n'
                 '\t=========================\n')
 
 # Player adventure
@@ -117,11 +116,11 @@ while answer != 'exit':
     with open('txt/saves/save'+ game_save +'.json', 'r') as json_file:
         json_data = json.load(json_file)
     answer = input('What do you wanna do?\n\t')
-    search = Functions.search_action(answer, Functions.actions) or Functions.search_action(answer, Functions.actions_display)
-    while not search:
+    search = Functions.search_action(answer, Functions.actions)
+    try:
+        search
+    except ValueError:
         print('Wrong answer. Please try again.\n')
-        search = Functions.search_action(answer, Functions.actions)
-        answer = input('What do you wanna do?\n\t')
     if answer == Functions.actions[0] or answer == Functions.actions_display[0]:
         print(more_actions)
 

@@ -19,7 +19,7 @@ class Explore:
             if continue_exploration == 'no':
                 is_exploring = False
 
-            elif is_exploring:
+            elif continue_exploration == 'yes':
                 when_exploring = random.randrange(1, 4)
 
                 if when_exploring == 1: # Ravin
@@ -58,57 +58,66 @@ class Explore:
                             if json_data['xp'] < 50:
                                 chances = [0.1, 0.9]
                                 print('\nYou have 10% of chance to win.\n')
-                                continue_fight = input('Are you sure you want to continue ? (yes/no)\n')
+                                continue_fight = input('\nAre you sure you want to continue ? (yes/no)\n')
                                 issue = ['win', 'loose']
                                 if continue_fight != 'no':
                                     result = random.choices(issue, chances)
                                     if result == ['win']:
-                                        print('(+50xp) || You\'re really lucky. You win this fight and gain 50xp.')
+                                        print('\n(+50xp) || You\'re really lucky. You win this fight and gain 50xp.\n')
                                         json_data['xp'] += 50
+                                        animals_fight = False
                                     if result == ['loose']:
-                                        print('(-25LP) || You loose... ')
+                                        print('\n(-25LP) || You loose... \n')
                                         json_data['life'] -= 25
+                                        animals_fight = False
                             elif json_data['xp'] < 100:
                                 chances = [0.2, 0.8]
                                 print('\nYou have 20% of chance to win.\n')
-                                continue_fight = input('Are you sure you want to continue ? (yes/no)\n')
+                                continue_fight = input('\nAre you sure you want to continue ? (yes/no)\n')
                                 issue = ['win', 'loose']
                                 if continue_fight != 'no':
                                     result = random.choices(issue, chances)
                                     if result == ['win']:
-                                        print('(+50xp) || You\'re really lucky. You win this fight and gain 50xp.')
+                                        print('\n(+50xp) || You\'re really lucky. You win this fight and gain 50xp.\n')
                                         json_data['xp'] += 50
+                                        animals_fight = False
                                     if result == ['loose']:
-                                        print('(-25LP) || You loose... ')
+                                        print('\n(-25LP) || You loose... \n')
                                         json_data['life'] -= 25
+                                        animals_fight = False
                             elif json_data['xp'] < 150:
                                 chances = [0.3, 0.7]
                                 print('\nYou have 30% of chance to win.\n')
-                                continue_fight = input('Are you sure you want to continue ? (yes/no)\n')
+                                continue_fight = input('\nAre you sure you want to continue ? (yes/no)\n')
                                 issue = ['win', 'loose']
                                 if continue_fight != 'no':
                                     result = random.choices(issue, chances)
                                     if result == ['win']:
-                                        print('(+50xp) || You\'re really lucky. You win this fight and gain 50xp.')
+                                        print('\n(+50xp) || You\'re really lucky. You win this fight and gain 50xp.\n')
                                         json_data['xp'] += 50
+                                        animals_fight = False
                                     if result == ['loose']:
-                                        print('(-25LP) || You loose... ')
+                                        print('\n(-25LP) || You loose... \n')
                                         json_data['life'] -= 25
+                                        animals_fight = False
                             elif json_data['xp'] < 200:
                                 chances = [0.4, 0.6]
                                 print('\nYou have 40% of chance to win.\n')
-                                continue_fight = input('Are you sure you want to continue ? (yes/no)\n')
+                                continue_fight = input('\nAre you sure you want to continue ? (yes/no)\n')
                                 issue = ['win', 'loose']
                                 if continue_fight != 'no':
                                     result = random.choices(issue, chances)
                                     if result == ['win']:
-                                        print('(+50xp) || You\'re really lucky. You win this fight and gain 50xp.')
+                                        print('\n(+50xp) || You\'re really lucky. You win this fight and gain 50xp.\n')
                                         json_data['xp'] += 50
+                                        animals_fight = False
                                     if result == ['loose']:
-                                        print('(-25LP) || You loose... ')
+                                        print('\n(-25LP) || You loose... \n')
                                         json_data['life'] -= 25
+                                        animals_fight = False
                         if player_choice == choices_lower[1]:
                             print('\nYou run.\n')
+                            animals_fight = False
 
                 # elif when_exploring == 3:
                 #     print('\n(+5 berries) || You found a bush full of berries.')
