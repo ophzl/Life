@@ -20,7 +20,7 @@ class Explore:
                 is_exploring = False
 
             elif continue_exploration == 'yes':
-                when_exploring = random.randrange(1, 4)
+                when_exploring = random.randrange(1, 3)
 
                 if when_exploring == 1: # Ravin
                     print('(-25LP) || Oh no! Who does the malin fall in the ravin. You loose 25LP.')
