@@ -11,7 +11,7 @@ To launch the game, please follow these instructions:
 <li>When you're in, just write the following :</li>
 </ul>
 <pre>
-python main.py
+python3 main.py
 </pre>
 <br>
 <p>PS: The project name is susceptible to change.</p>
