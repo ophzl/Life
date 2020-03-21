@@ -1,0 +1,124 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2020-03-21 20:02+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=cp1252\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+
+
+#: main.py:32
+msgid ""
+"\n"
+"\t      Choose a save:\n"
+"\t      1 - %s\n"
+"\t      2 - %s\n"
+"\t      3 - %s\n"
+msgstr ""
+
+#: main.py:43 main.py:127
+msgid ""
+"Wrong answer. Please try again.\n"
+msgstr ""
+
+#: main.py:60
+msgid ""
+"\n"
+"Oh, you're new. What's your name?\n"
+"\t"
+msgstr ""
+
+#: main.py:77
+msgid ""
+"\n"
+"\t##################################################################################################\n"
+"\n"
+"                             \t\tWhen you play, your game is auto saved.\n"
+"\n"
+"\t##################################################################################################\n"
+msgstr ""
+
+#: main.py:83
+msgid ""
+"\n"
+"\tHey %s !\n"
+" "
+msgstr ""
+
+#: main.py:86
+msgid "\tYou're weak. You only have %sLP."
+msgstr ""
+
+#: main.py:88
+msgid "\tTo my mind, you need to rest. You only have %sLP."
+msgstr ""
+
+#: main.py:90
+msgid "\tToday is a good day. You have %sLP."
+msgstr ""
+
+#: main.py:92
+msgid ""
+"\n"
+"\t=========================\n"
+"\t      You can...\n"
+"\t        Eat\n"
+"\t        Sleep\n"
+"\t        Explore\n"
+"\n"
+"\t More actions -> 'help'\n"
+"\t=========================\n"
+msgstr ""
+
+#: main.py:104
+msgid ""
+"\n"
+"\t=========================\n"
+"\t   GAME ACTIONS:\n"
+"\t       - Eat\n"
+"\t       - Sleep\n"
+"\t       - Explore\n"
+"\n"
+"\t   PLAYER ACTIONS:\n"
+"\t       - LP\n"
+"\t       - XP\n"
+"\t       - Money\n"
+"\t=========================\n"
+msgstr ""
+
+#: main.py:122
+msgid ""
+"What do you wanna do?\n"
+"\t"
+msgstr ""
+
+#: main.py:141
+msgid ""
+"\n"
+"You have %sLP.\n"
+msgstr ""
+
+#: main.py:144
+msgid ""
+"\n"
+"You have %sxp.\n"
+msgstr ""
+
+#: main.py:147
+msgid ""
+"\n"
+"You have %s€.\n"
+msgstr ""
+
+#: main.py:154
+msgid "Right, goodbye!"
+msgstr ""
+

@@ -1,5 +1,9 @@
 from classes import *
-import pdb, json, os
+import pdb, json, os, gettext
+
+# TRANSLATIONS
+fr = gettext.translation('fr_FR', localedir='i18n', languages=['fr'])
+fr.install()
 
 # Game characteristics
 is_playing = True
@@ -25,10 +29,10 @@ os.system('clear')
 
 # Saves
 saves = [1, 2, 3]
-save = input('\n\t      Choose a save:\n'
-             '\t      1 - ' + name1 +
-             '\n\t      2 - ' + name2 +
-             '\n\t      3 - ' + name3 + '\n')
+save = input(_('\n\t      Choose a save:\n'
+               '\t      1 - %s'
+               '\n\t      2 - %s'
+               '\n\t      3 - %s\n') % (name1, name2, name3))
 
 search = Functions.search_action(save, saves)
 game_save = '0'
@@ -36,7 +40,7 @@ game_save = '0'
 try:
     save = int(save)
 except ValueError:
-    print('Wrong answer. Please try again.\n')
+    print(_('Wrong answer. Please try again.\n'))
 
 if save == saves[0]:
     game_save = '1'
@@ -51,10 +55,10 @@ if Player.player(game_save)['name'] != '':
     Player.xp = Player.player(game_save)['xp']
     Player.money = Player.player(game_save)['money']
 else:
-    with open('txt/saves/save'+ game_save +'.json', 'r') as json_file:
+    with open('txt/saves/save' + game_save + '.json', 'r') as json_file:
         json_data = json.load(json_file)
-    json_data['name'] = input('\nOh, you\'re new. What\'s your name?\n\t')
-    with open('txt/saves/save'+ game_save +'.json', 'w') as json_file:
+    json_data['name'] = input(_('\nOh, you\'re new. What\'s your name?\n\t'))
+    with open('txt/saves/save' + game_save + '.json', 'w') as json_file:
         json.dump(json_data, json_file)
     Player.name = Player.player(game_save)['name']
     Player.life = Player.player(game_save)['life']
@@ -70,57 +74,57 @@ full_life = Player.life <= 100
 os.system('clear')
 
 # Advert msg
-print('\n\t##################################################################################################\n\n'
-      '                             \t\tWhen you play, your game is auto saved.\n\n'
-      '\t##################################################################################################\n')
+print(_('\n\t##################################################################################################\n\n'
+        '                             \t\tWhen you play, your game is auto saved.\n\n'
+        '\t##################################################################################################\n'))
 
 # When player starts the game
 # TODO: add datetime to say different kind of msg according to the hour of the day
-print('\n\tHey ' + Player.name + '\n')
+print(_('\n\tHey %s !\n ') % Player.name)
 
 if low_life:
-    print('\tYou\'re weak. You only have ' + str(Player.life) + 'LP.')
+    print(_('\tYou\'re weak. You only have %sLP.') % str(Player.life))
 elif mid_life:
-    print('\tTo my mind, you need to rest. You only have ' + str(Player.life) + 'LP.')
+    print(_('\tTo my mind, you need to rest. You only have %sLP.') % str(Player.life))
 elif full_life:
-    print('\tToday is a good day. You have ' + str(Player.life) + 'LP.')
+    print(_('\tToday is a good day. You have %sLP.') % str(Player.life))
 
-display_actions = ('\n'
-                   '\t=========================\n'
-                   '\t      You can...\n'
-                   '\t        Eat\n'
-                   '\t        Sleep\n'
-                   '\t        Explore\n'
-                   '\n'
-                   '\t More actions -> \'help\'\n'
-                   '\t=========================\n')
+display_actions = _('\n'
+                    '\t=========================\n'
+                    '\t      You can...\n'
+                    '\t        Eat\n'
+                    '\t        Sleep\n'
+                    '\t        Explore\n'
+                    '\n'
+                    '\t More actions -> \'help\'\n'
+                    '\t=========================\n')
 
 print(display_actions)
 
-more_actions = ('\n'
-                '\t=========================\n'
-                '\t   GAME ACTIONS:\n'
-                '\t       - Eat\n'
-                '\t       - Sleep\n'
-                '\t       - Explore\n'
-                '\n'
-                '\t   PLAYER ACTIONS:\n'
-                '\t       - LP\n'
-                '\t       - XP\n'
-                '\t       - Money\n'
-                '\t=========================\n')
+more_actions = _('\n'
+                 '\t=========================\n'
+                 '\t   GAME ACTIONS:\n'
+                 '\t       - Eat\n'
+                 '\t       - Sleep\n'
+                 '\t       - Explore\n'
+                 '\n'
+                 '\t   PLAYER ACTIONS:\n'
+                 '\t       - LP\n'
+                 '\t       - XP\n'
+                 '\t       - Money\n'
+                 '\t=========================\n')
 
 # Player adventure
 answer = ''
 while answer != 'exit':
-    with open('txt/saves/save'+ game_save +'.json', 'r') as json_file:
+    with open('txt/saves/save' + game_save + '.json', 'r') as json_file:
         json_data = json.load(json_file)
-    answer = input('What do you wanna do?\n\t')
+    answer = input(_('What do you wanna do?\n\t'))
     search = Functions.search_action(answer, Functions.actions)
     try:
         search
     except ValueError:
-        print('Wrong answer. Please try again.\n')
+        print(_('Wrong answer. Please try again.\n'))
     if answer == Functions.actions[0] or answer == Functions.actions_display[0]:
         print(more_actions)
 
@@ -134,18 +138,18 @@ while answer != 'exit':
         Explore.explore(Player, Functions, is_playing, game_save)
 
     elif answer == Functions.actions[4] or answer == Functions.actions_display[4]:
-        print('\nYou have ' + str(json_data['life']) + 'LP.\n')
+        print(_('\nYou have %sLP.\n') % str(json_data['life']))
 
     elif answer == Functions.actions[5] or answer == Functions.actions_display[5]:
-        print('\nYou have ' + str(json_data['xp']) + 'xp.\n')
+        print(_('\nYou have %sxp.\n') % str(json_data['xp']))
 
     elif answer == Functions.actions[6] or answer == Functions.actions_display[6]:
-        print('\nYou have ' + str(json_data['money']) + '€.\n')
+        print(_('\nYou have %s€.\n') % str(json_data['money']))
 
     # elif answer == Functions.actions[7] or answer == Functions.actions_display[7]:
     #     pdb.set_trace()
     #     Player.display_food_stock(Player)
 
     if answer == 'exit':
-        print('Right, goodbye!')
+        print(_('Right, goodbye!'))
         is_playing = False

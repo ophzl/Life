@@ -1,0 +1,169 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2020-03-21 20:02+0100\n"
+"PO-Revision-Date: 2020-03-21 20:14+0100\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 2.3\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language: fr_FR\n"
+
+#: main.py:32
+msgid ""
+"\n"
+"\t      Choose a save:\n"
+"\t      1 - %s\n"
+"\t      2 - %s\n"
+"\t      3 - %s\n"
+msgstr ""
+"\n"
+"\t      Choisissez une sauvegarde :\n"
+"\t      1 - %s\n"
+"\t      2 - %s\n"
+"\t      3 - %s\n"
+
+#: main.py:43 main.py:127
+msgid "Wrong answer. Please try again.\n"
+msgstr "Mauvaise réponse. Veuillez réessayer.\n"
+
+#: main.py:60
+msgid ""
+"\n"
+"Oh, you're new. What's your name?\n"
+"\t"
+msgstr ""
+"\n"
+"Bonjour, petit nouveau ! Quel est ton nom ?\n"
+"\t"
+
+#: main.py:77
+msgid ""
+"\n"
+"\t##################################################################################################\n"
+"\n"
+"                             \t\tWhen you play, your game is auto saved.\n"
+"\n"
+"\t##################################################################################################\n"
+msgstr ""
+"\n"
+"\t##################################################################################################\n"
+"\n"
+"                             \t\tLa partie est automatiquement sauvegardée.\n"
+"\n"
+"\t##################################################################################################\n"
+
+#: main.py:83
+msgid ""
+"\n"
+"\tHey %s !\n"
+" "
+msgstr ""
+"\n"
+"\tSalut %s !\n"
+
+#: main.py:86
+msgid "\tYou're weak. You only have %sLP."
+msgstr "\tTu es faible. Tu n'as que %sPV."
+
+#: main.py:88
+msgid "\tTo my mind, you need to rest. You only have %sLP."
+msgstr "\tSelon moi, tu devrais te reposer. Tu n'as que %sPV."
+
+#: main.py:90
+msgid "\tToday is a good day. You have %sLP."
+msgstr "\tAujourd'hui est un jour merveilleux. Tu as %sPV."
+
+#: main.py:92
+msgid ""
+"\n"
+"\t=========================\n"
+"\t      You can...\n"
+"\t        Eat\n"
+"\t        Sleep\n"
+"\t        Explore\n"
+"\n"
+"\t More actions -> 'help'\n"
+"\t=========================\n"
+msgstr ""
+"\n"
+"\t=========================\n"
+"\t      Tu peux...\n"
+"\t        Manger\n"
+"\t        Dormir\n"
+"\t        Voyager\n"
+"\n"
+"\t Plus d'actions -> 'help'\n"
+"\t=========================\n"
+
+#: main.py:104
+msgid ""
+"\n"
+"\t=========================\n"
+"\t   GAME ACTIONS:\n"
+"\t       - Eat\n"
+"\t       - Sleep\n"
+"\t       - Explore\n"
+"\n"
+"\t   PLAYER ACTIONS:\n"
+"\t       - LP\n"
+"\t       - XP\n"
+"\t       - Money\n"
+"\t=========================\n"
+msgstr ""
+"\n"
+"\t=========================\n"
+"\t   ACTIONS DE JEU :\n"
+"\t       - Manger\n"
+"\t       - Dormir\n"
+"\t       - Voyager\n"
+"\n"
+"\t   MES STATISTIQUES:\n"
+"\t       - LP\n"
+"\t       - XP\n"
+"\t       - Argent\n"
+"\t=========================\n"
+
+#: main.py:122
+msgid ""
+"What do you wanna do?\n"
+"\t"
+msgstr ""
+"Que veux-tu faire ?\n"
+"\t"
+
+#: main.py:141
+msgid ""
+"\n"
+"You have %sLP.\n"
+msgstr ""
+"\n"
+"Vous avez %sPV.\n"
+
+#: main.py:144
+msgid ""
+"\n"
+"You have %sxp.\n"
+msgstr ""
+"\n"
+"Vous avez %sxp.\n"
+
+#: main.py:147
+msgid ""
+"\n"
+"You have %s.\n"
+msgstr ""
+"\n"
+"Vous avez %s€.\n"
+
+#: main.py:154
+msgid "Right, goodbye!"
+msgstr "Bien, au revoir !"
