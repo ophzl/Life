@@ -3,3 +3,4 @@ from .functions import Functions
 from .sleep import Sleep
 from .food import Feed
 from .exploration import Explore
+from .game import Game
