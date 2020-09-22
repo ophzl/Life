@@ -19,18 +19,18 @@ os.system('cls')
 
 Game.startGame()
 
-# Advert msg
-print(_('\n\t##################################################################################################\n\n'
-        '                             \t\tWhen you play, your game is auto saved.\n\n'
-        '\t##################################################################################################\n'))
+if is_playing:
+    print(_('\n\t##################################################################################################\n\n'
+            '                             \t\tWhen you play, your game is auto saved.\n\n'
+            '\t##################################################################################################\n'))
 
-date = datetime.datetime.strftime(datetime.date.today(), '%d/%m/%Y')
-time = datetime.datetime.strftime(datetime.datetime.now(), '%H:%M')
+    date = datetime.datetime.strftime(datetime.date.today(), '%d/%m/%Y')
+    time = datetime.datetime.strftime(datetime.datetime.now(), '%H:%M')
 
-# When player starts the game
-print(_('\n\tHey %s !\n'
-        '\tIl est actuellement %s et nous sommes le %s.'
-        '\n\tSi vous ne savez pas quoi faire, tapez simplement "help" !') % (Player.name, date, time))
+    # When player starts the game
+    print(_('\n\tHey %s !\n'
+            '\tIl est actuellement %s et nous sommes le %s.'
+            '\n\tSi vous ne savez pas quoi faire, tapez simplement "help" !') % (Player.name, date, time))
 
 # if low_life:
 #     print(_('\tYou\'re weak. You only have %sLP.') % str(Player.life))
@@ -51,6 +51,7 @@ actions = _('\n'
             '\t       - XP\n'
             '\t       - Money\n'
             '\t       - Inventory\n'
+            '\t       - Get resources\n'
             '\t=========================\n')
 
 # Player adventure
@@ -66,12 +67,9 @@ while answer != 'exit':
     if answer == Functions.actions[0] or answer == Functions.actions_display[0]:
         print(actions)
 
-    if answer == Functions.actions[1] or answer == Functions.actions_display[1]:
+    elif answer == Functions.actions[1] or answer == Functions.actions_display[1]:
         Feed.feed(Player)
 
-    #     elif answer == Functions.actions[2] or answer == Functions.actions_display[2]:
-    #         Sleep.sleep(Player, game_save)
-    #
     #     elif answer == Functions.actions[3] or answer == Functions.actions_display[3]:
     #         Explore.explore(Player, Functions, is_playing, game_save)
     #
@@ -87,7 +85,10 @@ while answer != 'exit':
     elif answer == Functions.actions[7] or answer == Functions.actions_display[7]:
         print(_('\nHere is your inventory:\n'))
         for elem in Player.inventory:
-            print(_('\n' + elem))
+            print(_('\t' + elem))
+
+    elif answer == Functions.actions[8] or answer == Functions.actions_display[8]:
+        Ressources.getRessources()
 
     if answer == 'exit':
         Game.exitGame()
