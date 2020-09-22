@@ -5,5 +5,5 @@ Explore
 LP
 XP
 Money
-Food stock
+Inventory
 Exit
