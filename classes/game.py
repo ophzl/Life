@@ -9,12 +9,11 @@ with open('txt/saves/save1.json', 'r') as json_file:
 class Game:
 
     def startGame():
-        choices = [1, 2]
+        choices = [1, 2, 3]
         game_choice = input(_('\t      Chose your game:\n'
-                              '\t      1 - %s' % json_data['name'] +
-                              '\n\n\t 2 - === CREATE NEW GAME ===\n\n'))
-
-        search = Functions.search_action(game_choice, choices)
+                              '\t      1 - %s\n'
+                              '\t      2 - === CREATE NEW GAME ===\n'
+                              '\t      3 - Exit\n') % json_data['name'])
 
         try:
             game_choice = int(game_choice)
@@ -23,14 +22,17 @@ class Game:
 
         if game_choice == 1:
             Game.loadPlayer('1')
-        else:
+        elif game_choice == 2:
             confirmation = input(_('Are you sure you want to erase the actual save ? (this action is irreversible)\n'))
             if confirmation == 'yes':
                 game_creation = True
                 Game.createPlayer('1', game_creation)
                 Game.loadPlayer('1')
             else:
-                return False
+                Game.exitGame()
+
+        elif game_choice == 3:
+            Game.exitGame()
 
     def createPlayer(self, game_creation):
         difficulties = [1, 2, 3]
@@ -58,8 +60,8 @@ class Game:
             starter = input(_('\nDo you want to start with a starter pack ?\n'))
 
             if starter == 'yes':
-                json_data['inventory'] = ['Wood Sword', 'Wood Axe', 'Wood Pickaxe']
-                print(_('\nYou\'ve been equiped with a wood sword, a wood axe and a wood pickaxe.'))
+                json_data['inventory'] = [{'Wood Sword': [{'durability': 5}], 'Wood Axe': [{'durability': 5}], 'Wood Pickaxe': [{'durability': 5}]}, 'Meat']
+                print(_('\nYou\'ve been equiped with a wood sword, a wood axe, a wood pickaxe, and a piece of fresh meat.'))
             else:
                 return False
 
@@ -108,3 +110,4 @@ class Game:
             json.dump(json_data, json_file)
 
         print(_('Partie sauvegardée. A bientôt !'))
+        return False
