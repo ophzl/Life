@@ -6,4 +6,5 @@ LP
 XP
 Money
 Inventory
+Get resources
 Exit
