@@ -52,6 +52,7 @@ elif save == saves[2]:
 if Player.player(game_save)['name'] != '':
     Player.name = Player.player(game_save)['name']
     Player.life = Player.player(game_save)['life']
+    Player.foodPoints = Player.player(game_save)['foodPoints']
     Player.xp = Player.player(game_save)['xp']
     Player.money = Player.player(game_save)['money']
 else:
@@ -62,6 +63,7 @@ else:
         json.dump(json_data, json_file)
     Player.name = Player.player(game_save)['name']
     Player.life = Player.player(game_save)['life']
+    Player.foodPoints = Player.player(game_save)['foodPoints']
     Player.xp = Player.player(game_save)['xp']
     Player.money = Player.player(game_save)['money']
 
@@ -71,7 +73,7 @@ mid_life = Player.life < 75
 full_life = Player.life <= 100
 
 # CLEAR CONSOLE
-os.system('clear')
+os.system('cls')
 
 # Advert msg
 print(_('\n\t##################################################################################################\n\n'
@@ -129,7 +131,7 @@ while answer != 'exit':
         print(more_actions)
 
     if answer == Functions.actions[1] or answer == Functions.actions_display[1]:
-        Feed.feed(Player)
+        Feed.feed(Player, game_save)
 
     elif answer == Functions.actions[2] or answer == Functions.actions_display[2]:
         Sleep.sleep(Player, game_save)
@@ -146,9 +148,8 @@ while answer != 'exit':
     elif answer == Functions.actions[6] or answer == Functions.actions_display[6]:
         print(_('\nYou have %s€.\n') % str(json_data['money']))
 
-    # elif answer == Functions.actions[7] or answer == Functions.actions_display[7]:
-    #     pdb.set_trace()
-    #     Player.display_food_stock(Player)
+    elif answer == Functions.actions[7] or answer == Functions.actions_display[7]:
+        print(_('\nYou have %s piece of meat in your inventory.\n') % str(json_data['food']))
 
     if answer == 'exit':
         print(_('Right, goodbye!'))
